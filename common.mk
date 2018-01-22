@@ -36,9 +36,10 @@
 .SUFFIXES : .cu .cu_dbg.o .c_dbg.o .cpp_dbg.o .cu_rel.o .c_rel.o .cpp_rel.o .cubin
 
 # Add new SM Versions here as devices with new Compute Capability are released
-SM_VERSIONS := sm_10 sm_11 sm_12 sm_13
+SM_VERSIONS := sm_30 
+# sm_10 sm_11 sm_12 sm_13
 
-CUDA_INSTALL_PATH ?= /usr/local/cuda-8.0
+CUDA_INSTALL_PATH ?= /usr/local/cuda-9.1
 
 ifdef cuda-install
 	CUDA_INSTALL_PATH := $(cuda-install)

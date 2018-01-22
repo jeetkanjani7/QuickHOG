@@ -166,6 +166,7 @@ int main(void)
 	Mat temp = imread("/home/jeetkanjani7/pedestrian_imgs/pedestrians.jpg",1);
 
 	Mat im = Mat(temp.size(), CV_MAKE_TYPE(temp.type(), 4));
+	
 	cvtColor(temp, im, CV_BGR2BGRA, 4);
 	
 	Mat Oxsight;

@@ -34,10 +34,10 @@
 ################################################################################
 
 # Add source files here
-EXECUTABLE	:= fastHOG
+EXECUTABLE	:= QuickHOG
 # C/C++ source files (compiled with gcc / c++)
  CCFILES		:= \
-	fastHOG.cpp \
+	QuickHOG.cpp \
 # HOG UTILS 
  CCUTILS		:= \
 	ImageWindow.cpp \
