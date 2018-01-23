@@ -8,6 +8,7 @@
 #include "HOGImage.h"
 
 #include <stdlib.h>
+
 #include <string.h>
 
 #include <stdio.h>
