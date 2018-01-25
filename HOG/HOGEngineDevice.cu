@@ -253,8 +253,7 @@ __global__ void bitonic_sort_step(HOGResult *CFR_res_d, int j, int k)
 
 __device__ int getGlobalIdx_3D_3D()
 {
-	int blockId = blockIdx.x 
-			 + blockIdx.y * gridDim.x 
+	int blockId = blockIdx.x + blockIdx.y * gridDim.x 
 			 + gridDim.x * gridDim.y * blockIdx.z; 
 	int threadId = blockId * (blockDim.x * blockDim.y * blockDim.z)
 			  + (threadIdx.z * (blockDim.x * blockDim.y))
@@ -279,7 +278,7 @@ __device__ int func(int a, int b)
 
 __global__ void CFR_kernel(HOGResult *CFR_res,float1 *svmScores, int rNumberOfWindowsX, int rNumberOfWindowsY, int rWindowSizeX , int rWindowSizeY , int startScale, int rPaddedWidth, int rPaddedHeight, int rCellSizeX, int rCellSizeY, int rPaddingSizeX, int rPaddingSizeY, int minX, int minY, int* resultId, int *resId_d, int *counter, float rscaleRatio)
 {	
-    	int Id = getGlobalIdx_3D_3D();
+    int Id = getGlobalIdx_3D_3D();
 	__shared__ int total_count;
 	//extern __shared__ int write_test[];
 	

@@ -91,7 +91,7 @@ __global__ void linearSVMEvaluation(float1* svmScores, float svmBias,
 	if (threadIdx.x == 0)
 	{
 		smem[smemLocalPos].x -= svmBias;
-	svmScores[blockIdx.x + blockIdx.y * hNumberOfWindowsX + scaleId * hNumberOfWindowsX * hNumberOfWindowsY] = smem[smemLocalPos];
+		svmScores[blockIdx.x + blockIdx.y * hNumberOfWindowsX + scaleId * hNumberOfWindowsX * hNumberOfWindowsY] = smem[smemLocalPos];
 	}
 
 	if (blockIdx.x == 10 && blockIdx.y == 8)

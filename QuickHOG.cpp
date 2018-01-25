@@ -57,12 +57,12 @@ void NMScalc(bool *res, HOGResult *b, int count)
     	for(int j=0; j<count; j++)
     	{
     		if(b[i].score > b[j].score)
-	 	{	 		
-	 		if(IOUcalc(b[i],b[j]) > theta)
-	 		{ 
-	 			res[j] = false; 
-	 		}
-		}
+	 		{	 		
+	 			if(IOUcalc(b[i],b[j]) > theta)
+	 			{ 
+	 				res[j] = false; 
+	 			}
+			}
     	}	
     }  
 }
@@ -122,9 +122,6 @@ Mat & DrawNms(Mat &im,HOGResult *nmsResults, int count)
 			
 	}
 
-	
-	
-
 	return im;
 }
 
@@ -134,7 +131,6 @@ HOGEngine *doStuffHere(HOGImage *image, HOGImage *imageCUDA)
 	HOGEngine *Engine = HOGEngine::Instance();
 	Engine->InitializeHOG(image->width, image->height,
 			PERSON_LINEAR_BIAS, PERSON_WEIGHT_VEC, PERSON_WEIGHT_VEC_LENGTH);
-
 	Timer t;
 	t.restart();
 	Engine->BeginProcess(image);
@@ -157,13 +153,12 @@ HOGEngine *doStuffHere(HOGImage *image, HOGImage *imageCUDA)
 	printf("Drawn %d positive results.\n", Engine->nmsResultsCount);
 		
 	return Engine;
-
 }
 
 int main(void)
 {
 
-	Mat temp = imread("/home/jeetkanjani7/pedestrian_imgs/pedestrians.jpg",1);
+	Mat temp = imread("../../Files/Images/pedestrians.jpg",1);
 
 	Mat im = Mat(temp.size(), CV_MAKE_TYPE(temp.type(), 4));
 	cvtColor(temp, im, CV_BGR2BGRA, 4);
@@ -182,8 +177,8 @@ int main(void)
 	HOGResult *nms_res = res_instance->nmsResults;
 	bool *oxsight_res = res_instance->oxsight_results;
 	HOGResult *Ox_windows = res_instance -> oxsight_windows;
-	im = DrawBoxes(im, box_results, res_instance->formattedResultsCount);
-	im = DrawNms(im, nms_res, res_instance->nmsResultsCount);
+	//im = DrawBoxes(im, box_results, res_instance->formattedResultsCount);
+	//im = DrawNms(im, nms_res, res_instance->nmsResultsCount);
 	
 	//int count =  res_instance->formattedResultsCount;
 	bool *res = oxsight_res;
@@ -220,7 +215,7 @@ int main(void)
 	
 
 	imshow("nms_bool",Oxsight);
-	imshow("cuda_img",im);
+	//imshow("cuda_img",im);
 	waitKey(0);
 	res_instance->FinalizeHOG();
 	delete image;
